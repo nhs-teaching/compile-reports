@@ -1,6 +1,6 @@
 const { getFiles } = require('./helpers.js');
 const { processCheckStyleReport } = require('./check.js');
-const { processTestReports } = require('./test-report.js');
+const { processTestReports } = require('./testReport.js');
 const path = require('path');
 
 /**

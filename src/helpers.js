@@ -15,7 +15,7 @@ module.exports.getFiles = async (dir) => {
   try {
     files = await glob(dir);   
   } catch (e) {
-    process.stderr.write(e);
+    process.stderr.write(e.toString());
   }
 
   return files;
@@ -34,7 +34,7 @@ module.exports.openFile = async (file) => {
   try {
     data = await readFile(file);
   } catch (e) {
-    process.stderr.write(e);
+    process.stderr.write(e.toString());
   }
 
   return data.toString();
@@ -52,7 +52,7 @@ module.exports.parseXML = async (xml) => {
   try {
     obj = await parseXMLString(xml);
   } catch(e) {
-    process.stderr.write(e);
+    process.stderr.write(e.toString());
   }
 
   return obj;
@@ -68,7 +68,7 @@ module.exports.dumpToFile = async (fileName, contents) => {
   try {
     await writeFile(fileName, contents);
   } catch (e) {
-    process.stderr.write(e);
+    process.stderr.write(e.toString());
   }
 }
 

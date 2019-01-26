@@ -20,7 +20,7 @@ async function showSrcFiles(proj) {
      for (srcFile of srcFiles) {
        let contents = await openFile(srcFile);
        process.stdout.write(contents);
-     
+
        while (!(await enq.ask('continue')).continue) {}
      }
   } catch (e) {
@@ -32,22 +32,22 @@ async function getStudent(proj) {
   let logLoc = path.resolve(proj, 'output.log');
 
   let logFile = await openFile(logLoc);
-  
+
   console.log(logFile.split('\n').slice(0, 4).join('\n'));
 }
 
 /**
- * Processes the results of the project for tests and checks. 
- * 
+ * Processes the results of the project for tests and checks.
+ *
  * @param proj <string>
  */
 async function processProject(proj) {
   await getStudent(proj);
   while(!(await enq.ask('continue')).continue) {}
-  
+
   let srcLoc = path.resolve(proj, 'src', 'main', '**', '*.java');
-  await showSrcFiles(srcLoc); 
-  
+  await showSrcFiles(srcLoc);
+
   let checkLoc = path.resolve(proj, 'build', 'reports', 'check*.xml');
   await processCheckStyleReport(checkLoc);
 
